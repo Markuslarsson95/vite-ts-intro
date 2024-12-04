@@ -1,24 +1,31 @@
-import "./style.scss";
-import typescriptLogo from "./typescript.svg";
-import viteLogo from "/vite.svg";
-import { setupCounter } from "./counter.ts";
+import { foo, averageAge, averageNumberOfHobbies, oldestUser } from "./func";
+import User from "./user";
 
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`;
+const user: User = {
+  name: "Markus",
+  age: 30,
+  hobbies: ["Padel", "Fotboll", "Gaming"],
+};
+const user2: User = {
+  name: "Niklas",
+  age: 47,
+  hobbies: ["Brädspel", "Koda"],
+};
+const user3: User = {
+  name: "Felicia",
+  age: 28,
+  hobbies: ["Läsa"],
+};
+foo(user);
 
-setupCounter(document.querySelector<HTMLButtonElement>("#counter")!);
+const userArray: User[] = [user, user2, user3];
+
+// console.log(arr);
+
+console.log(`Medelåldern på alla användare är ${averageAge(userArray)}`);
+console.log(
+  `Medelvärde antal hobbys per användare är ${averageNumberOfHobbies(
+    userArray
+  )}`
+);
+console.log(`Äldsta användaren är ${oldestUser(userArray)} år gammal`);
